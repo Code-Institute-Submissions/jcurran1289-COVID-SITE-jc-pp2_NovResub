@@ -41,3 +41,29 @@ var continent = [ {
 "total_deaths_per_million": "21.865"
 }
 ]
+
+
+window.addEventListener("load", function(){
+
+    let continent_input = document.getElementById("continent_input");
+    let total_cases = document.getElementById("total_cases");
+    let total_deaths =document.getElementById("total_deaths");
+    let total_cases_per_million =document.getElementById("total_cases_per_million");
+    let total_deaths_per_million =document.getElementById("total_deaths_per_million");
+
+
+    continent_input.value=continent[0].continent;
+
+    total_cases.innerHTML=continent[0].total_cases;
+    total_deaths.innerHTML=continent[0].total_deaths;
+    total_cases_per_million.innerHTML=continent[0].total_cases_per_million;
+    total_deaths_per_million.innerHTML=continent[0].total_deaths_per_million;
+
+});
+
+
+
+ let search_button = document.getElementById("search-button");
+// let  continent_input = document.getElementById("continent_input");
+
+console.log(search_button);

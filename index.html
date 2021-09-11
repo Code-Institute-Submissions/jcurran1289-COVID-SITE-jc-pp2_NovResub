@@ -15,7 +15,7 @@
 <body>
 
     <h1 class="heading">
-        <img class="logo" src="assets/images/logo.png" alt="logo"> COVID 2020 by country
+        <img class="logo" src="assets/images/logo.png" alt="logo"> COVID 2020 by Continent
     </h1>
 
     <section class="stat-area">
@@ -30,16 +30,21 @@
             </button>
 
         </div>
-      <div class="stats">
-        <p>Total cases:</p>
-        <p>Total hospitalizations:</p>
-        <p>Total Deaths:</p>
+      <div class="stats-container">
+        <p class="stats">Total Cases:</p>
+        <p id="total_cases" class="stats"></p>
+        <p class="stats"></p>Total Deaths:</p>
+        <p id="total_deaths" class="stats"></p>
+        <p class="stats">Total Cases per million:</p>
+        <p id="total_cases_per_million" class="stats"></p>
+        <p class="stats"></p>Total Deaths per million</p>
+        <p id="total_deaths_per_million" class="stats"></p>
     </div>
-        <div class="country-selection">
-            <label for="country">Country</label>
-            <input type="text" id="country" name="name">
+        <div class="Continent-selection">
+            <label for="continent_input">Continent</label>
+            <input type="text" id="continent_input" name="name">
 
-            <button class="btn big -- search">Search
+            <button class="btn big -- search" id="search-button">Search
                 <i class="fas fa-search"></i>
             </button>
         </div>
