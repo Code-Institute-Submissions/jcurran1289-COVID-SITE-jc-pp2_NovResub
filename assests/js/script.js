@@ -67,3 +67,18 @@ window.addEventListener("load", function(){
 // let  continent_input = document.getElementById("continent_input");
 
 console.log(search_button);
+
+function search_continent() {
+    let input = document.getElementById('searchbar').value
+    input=input.toLowerCase();
+    let x = document.getElementsByClassName('animals');
+      
+    for (i = 0; i < x.length; i++) { 
+        if (!x[i].innerHTML.toLowerCase().includes(input)) {
+            x[i].style.display="none";
+        }
+        else {
+            x[i].style.display="list-item";                 
+        }
+    }
+}

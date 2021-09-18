@@ -1,8 +1,11 @@
 
 body {
-    background-color: white;
-    font-family: "Raleway", sans-serif;
+
+
     color: #445361;
+    font-family: 'Open Sans', Arial, sans-serif;
+	/* margin: 0; */
+	background-color: whitesmoke;
     text-align: center;
 }
 
@@ -18,6 +21,55 @@ body {
     padding-right: 5px;
 }
 
-.stat-controls, .stats{
+.stats{
     line-height: 75px;
+    
+}
+
+.main-container{
+    /* width: 66%;
+    margin: 0 auto; */
+    position: relative;
+}
+
+.symptoms-area{
+
+
+    /* border: 5px solid black; */
+    float:left; 
+    /* background:Red; */
+    width:25%;
+    height:280px;
+}
+
+.stats-area{
+    
+    /* width: 1000px;
+    height: 0;  */
+
+    float:left; 
+    /* background:Green; */
+    width:50%;
+    height:280px;
+}
+
+.text-area{
+
+
+    /* border: 5px solid black; */
+    
+    float:right;
+    /* background:blue; */
+    width:25%;
+    height:280px;
+}
+
+.btn-big-left{
+    float: left;
+ 
+    left: 200px;
+     top: -50%; 
+}
+.btn-big-right{
+    float: right;
 }
