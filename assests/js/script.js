@@ -42,7 +42,7 @@ var continent = [ {
 }
 ]
 let search_button = document.getElementById("search-button");
-
+var arr = ['foo', 'bar', 'baz'];
     
 let i =0
 document.getElementById("btn-right").addEventListener("click", nextItem);
@@ -84,28 +84,41 @@ window.addEventListener("load", function(){
 
 
 
-// let  continent_input = document.getElementById("continent_input");
+var currentIndex = 0;
+document.getElementById("search-button").addEventListener("click", function () {
+    var value = document.getElementById('continent_input').value
 
-console.log(search_button);
+    if (value.length > 0) {
+        var found = false;
+        var result = null;
+        var newIndex = 0;
 
-function search_continent() {
-    let input = document.getElementById('searchbar').value
-    input=input.toLowerCase();
-    let x = document.getElementsByClassName('animals');
-      
-    for (i = 0; i < x.length; i++) { 
-        if (!x[i].innerHTML.toLowerCase().includes(input)) {
-            x[i].style.display="none";
+        for (i = 0; i < continent.length; i++) {
+            var currentContinet = continent[i];
+            var name = currentContinet['continent'];
+
+            if (name.toLowerCase() === value.toLowerCase()) {
+                found = true;
+                result = currentContinet;
+                newIndex = i; //save the index
+            }
         }
-        else {
-            x[i].style.display="list-item";                 
+
+        if (found === true) {
+            total_cases.innerHTML = result.total_cases;
+            total_deaths.innerHTML = result.total_deaths;
+            total_cases_per_million.innerHTML = result.total_cases_per_million;
+            total_deaths_per_million.innerHTML = result.total_deaths_per_million;
+
+            currentIndex = newIndex; //set the new current index
+        }else{
+            alert("we were unable to find youyr continent")
         }
+    } else {
+        alert("Please enter a continent")
     }
-}
+});
 
-// document.getElementById("search-button").addEventListener("click", function search_continent(){
-//     let currentContinent= continent[i];
-//     let name = currentContinent["continent"]
 
 
 function nextItem() {
