@@ -42,15 +42,12 @@ var continent = [ {
 }
 ]
 let search_button = document.getElementById("search-button");
-var arr = ['foo', 'bar', 'baz'];
-    
-let i =0
-document.getElementById("btn-right").addEventListener("click", nextItem);
 
+let total_cases = document.getElementById("total_cases");
 window.addEventListener("load", function(){
 
     let continent_input = document.getElementById("continent_input");
-    let total_cases = document.getElementById("total_cases");
+
     let total_deaths =document.getElementById("total_deaths");
     let total_cases_per_million =document.getElementById("total_cases_per_million");
     let total_deaths_per_million =document.getElementById("total_deaths_per_million");
@@ -65,19 +62,6 @@ window.addEventListener("load", function(){
 
 
 
-    document.getElementById('btn-left').addEventListener(
-        'click', // we want to listen for a click
-        function (e) { // the e here is the event itself
-            total_cases.innerHTML = prevItem();
-        }
-    );
-    
-    document.getElementById('btn-right').addEventListener(
-        'click', // we want to listen for a click
-        function (e) { // the e here is the event itself
-            total_cases.innerHTML = nextItem();
-        }
-    );
 
 });
 
@@ -121,18 +105,42 @@ document.getElementById("search-button").addEventListener("click", function () {
 
 
 
-function nextItem() {
-    i = i + 1; // increase i by one
-    i = i % continent.length; // if we've gone too high, start from `0` again
+// function nextItem() {
+//     i = i + 1; // increase i by one
+//     i = i % continent.length; // if we've gone too high, start from `0` again
   
-    return continent[i]; // give us back the item of where we are now
-}
+//     return continent[i]; // give us back the item of where we are now
+// }
 
-function prevItem() {
-    if (i === 0) { // i would become 0
-        i = continent.length; // so put it at the other end of the array
+// function prevItem() {
+//     if (i === 0) { // i would become 0
+//         i = continent.length; // so put it at the other end of the array
+//     }
+//     i = i - 1; // decrease by one
+//     return continent[i]; // give us back the item of where we are now
+// }
+
+document.getElementById("btn-right").addEventListener("click", function(){
+    for(i=0; i<continent.length; i++){
+        let nextIndex = currentIndex + 1;
+        // let nextContinet = ;
+        
+      
+
+        total_cases.innerHTML=continent[nextIndex].total_cases;
+        currentIndex = nextIndex;
+        
+        
     }
-    i = i - 1; // decrease by one
-    return continent[i]; // give us back the item of where we are now
-}
+});
+   //else if current index is NOT the last index in array
+    //add 1 to current index var nextIndex = currentIndex + 1,
+    // get the data i.e. var nextContinet = continent[nextIndex]
 
+    //set the data
+    // total_cases.innerHTML = nextContinet.total_cases;
+    // total_deaths.innerHTML = nextContinet.total_deaths;
+    // total_cases_per_million.innerHTML = nextContinet.total_cases_per_million;
+    // total_deaths_per_million.innerHTML = nextContinet.total_deaths_per_million;
+
+    //update the currentIndex variable to the nex index i.e currentIndex = nextIndex
