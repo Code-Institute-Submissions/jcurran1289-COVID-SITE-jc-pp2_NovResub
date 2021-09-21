@@ -41,6 +41,8 @@ var continent = [ {
 "total_deaths_per_million": "21.865"
 }
 ]
+
+console.log(continent)
 let search_button = document.getElementById("search-button");
 
 
@@ -50,10 +52,11 @@ let total_deaths =document.getElementById("total_deaths");
 let total_cases_per_million =document.getElementById("total_cases_per_million");
 let total_deaths_per_million =document.getElementById("total_deaths_per_million");
 let continentName =document.getElementById("continentHeader");
+
 window.addEventListener("load", function(){
 
-
-
+    getISS();
+let continent = data
 
     continentName.innerHTML=continent[0].name;
     total_cases.innerHTML=continent[0].total_cases;
@@ -149,14 +152,13 @@ document.getElementById("btn-right").addEventListener("click", function(){
     }
     
 });
-   //else if current index is NOT the last index in array
-    //add 1 to current index var nextIndex = currentIndex + 1,
-    // get the data i.e. var nextContinet = continent[nextIndex]
 
-    //set the data
-    // total_cases.innerHTML = nextContinet.total_cases;
-    // total_deaths.innerHTML = nextContinet.total_deaths;
-    // total_cases_per_million.innerHTML = nextContinet.total_cases_per_million;
-    // total_deaths_per_million.innerHTML = nextContinet.total_deaths_per_million;
+const api_url = 'https://api.covid19api.com/summary';
+async function getISS() {
+    const response = await fetch(api_url);
+    const data = await response.json();
+    // console.log(data.countries);
+    console.log(data.Countries);
+    // console.log(data);
+}
 
-    //update the currentIndex variable to the nex index i.e currentIndex = nextIndex
