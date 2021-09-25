@@ -1,52 +1,8 @@
-// var continent = [ {
-// "name": "Asia",
-// "total_cases": "20715441",
-// "total_deaths": "337656",
-// "newCases": "4426.697",
-// "newDeaths": "72.154"
-// } ,
-// {
-// "name": "Europe",
-// "total_cases": "23807046",
-// "total_deaths": "545714",
-// "newCases": "31838.354",
-// "newDeaths": "729.811"
-// } ,
-// {
-// "name": "Africa",
-// "total_cases": "2760450",
-// "total_deaths": "65468",
-// "newCases": "2009.812",
-// "newDeaths": "47.666"
-// } ,
-// {
-// "name": "North America",
-// "total_cases": "23074544",
-// "total_deaths": "512870",
-// "newCases": "38677.955",
-// "newDeaths": "859.682"
-// } ,
-// {
-// "name": "South America",
-// "total_cases": "13194159",
-// "total_deaths": "418041",
-// "newCases": "30383.077",
-// "newDeaths": "962.651"
-// } ,
-// {
-// "name": "Oceania",
-// "total_cases": "31440",
-// "total_deaths": "945",
-// "newCases": "727.442",
-// "newDeaths": "21.865"
-// }
-// ]
-
 let continent=[]; //create empty array
 
 window.addEventListener("load", function(){
     getData() ;
-    getData2();
+    timeLineChart();
 });
 
 
@@ -62,16 +18,22 @@ async function getData() {
     onDone();
 }
 
+let countriesTimelineDate= [];
+let countriesTimelineCases= [];
 const api_url2 = 'https://api.covid19api.com/country/south-africa/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z';
-async function getData2() {
-    const response = await fetch(api_url2);
+async function getData2(place) {
+    // const response = await fetch(api_url2);
+    const response = await fetch('https://api.covid19api.com/country/'+place+'/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z');
     const countriesTimeline = await response.json();
-    // const countriesTimeline = data.Countries;
-    // for(i=0; i< 10; i++){
-    //     pp.push(countries[i]);
-    // }
-    console.log(countriesTimeline)
+    // const countriesTimelineCountry = countriesTimeline.Country;
+    for(i=0; i< countriesTimeline.length; i++){
+        countriesTimelineDate.push(countriesTimeline[i].Date.slice(0, 10));
+        countriesTimelineCases.push(countriesTimeline[i].Cases);
+    }
+
+    // ee=countriesTimeline;
     // continent=countries;
+ 
     onDone();
 }
 
@@ -83,12 +45,15 @@ function onDone(){
         total_deaths.innerHTML=continent[0].TotalDeaths;
         newCases.innerHTML=continent[0].NewConfirmed;
         newDeaths.innerHTML=continent[0].NewDeaths;
+        console.log(continent);
+        console.log(countriesTimelineDate);
+        console.log(countriesTimelineCases);
     
 }
 // getISS();
-console.log(continent);
+
 // console.log(pp[0]);
-console.log(continent[continent.length]);
+
 
 
 
@@ -186,11 +151,10 @@ document.getElementById("btn-left").addEventListener("click", function(){
     
     continentName.innerHTML=continent[continent.length-1].Country;
     total_cases.innerHTML=continent[continent.length-1].TotalConfirmed;
-
     total_deaths.innerHTML=continent[continent.length-1].TotalDeaths;
     newCases.innerHTML=continent[continent.length-1].NewConfirmed;
     newDeaths.innerHTML=continent[continent.length-1].NewDeaths;
-    
+
     currentIndex=continent.length-1;
    }else{
 
@@ -208,13 +172,47 @@ document.getElementById("btn-left").addEventListener("click", function(){
 
 });
 
+ function timeLineChart(){
+ 
+var ctx = document.getElementById('chart').getContext('2d');
 
-
-
-
-
-// const api_url2 = 'https://reqres.in/api/users';
-
-// const api_url3 = 'https://services1.arcgis.com/0MSEUqKaxRlEPj5g/arcgis/rest/services/ncov_cases2_v1/FeatureServer/2/query?where=1%3D1&outFields=*&outSR=4326&f=json';
-
-
+getData2(ireland);
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+         labels: countriesTimelineDate,
+        // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: 'New Cases',
+            fill: true,
+            // data: [12, 19, 3, 5, 2, 3],
+            data: countriesTimelineCases,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+     
+};
