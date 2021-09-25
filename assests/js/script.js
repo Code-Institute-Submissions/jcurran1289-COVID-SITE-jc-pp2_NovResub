@@ -55,7 +55,6 @@ let continentName =document.getElementById("continentHeader");
 
 window.addEventListener("load", function(){
 
-    getISS();
 let continent = data
 
     continentName.innerHTML=continent[0].name;
@@ -154,11 +153,40 @@ document.getElementById("btn-right").addEventListener("click", function(){
 });
 
 const api_url = 'https://api.covid19api.com/summary';
-async function getISS() {
-    const response = await fetch(api_url);
-    const data = await response.json();
-    // console.log(data.countries);
-    console.log(data.Countries);
-    // console.log(data);
-}
+// async function getISS() {
+//     const response = await fetch(api_url);
+//     const data = await response.json();
+//     // console.log(data.countries);
+//     console.log(data.Countries);
+//     // console.log(data);
+// }
 
+const api_url2 = 'https://reqres.in/api/users';
+
+const api_url3 = 'https://services1.arcgis.com/0MSEUqKaxRlEPj5g/arcgis/rest/services/ncov_cases2_v1/FeatureServer/2/query?where=1%3D1&outFields=*&outSR=4326&f=json';
+
+
+function getISS2() 
+{
+       fetch(api_url).then(response => {
+           if (!response.ok){
+               throw error("ERROR");
+           }
+               
+               return response.json();
+           }).then(data => {
+            console.log(data);
+            console.log(data.Countries);
+            const countries = data.Countries.map(country =>{
+                return country;
+            });
+       
+           });
+               
+
+                   
+};
+getISS2();
+console.log("was ere");
+let p = getISS2();
+console.log(p);
