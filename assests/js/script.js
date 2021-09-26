@@ -6,9 +6,13 @@ let continent=[]; //create empty array
 
 window.addEventListener("load", function(){
     getData() ;
-    myMapfff(mapsLat,mapsLon);
+    myMapfff();
+
+    getData2(mapLocation) ;
     
-    
+
+     console.log(mapLocation);
+    console.log(Object.values(mapLocation[0]))
 });
 
 
@@ -28,7 +32,7 @@ async function getData() {
     //     }
     // }
 
-    getData2(continent[0].Country);
+  
      console.log(continent);
     onDone();
 }
@@ -66,19 +70,19 @@ async function getData() {
 //         console.log(place);
   
 // }
-let mapsLat= [];
-let mapsLon= [];
-const api_url2 = 'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyDlDbfJtg5Gs7rrr59IwV0RgFxOUcEIS1s';
-async function getData2(place) {
+let mapLocation= [];
+const api_url2 = 'https://maps.googleapis.com/maps/api/geocode/json?address=ireland&key=AIzaSyDlDbfJtg5Gs7rrr59IwV0RgFxOUcEIS1s';
+async function getData2() {
     // const response = await fetch(api_url2);
-    const response = await fetch('https://api.covid19api.com/country/'+place+'/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z');
+    const response = await fetch('https://maps.googleapis.com/maps/api/geocode/json?address=ireland&key=AIzaSyDlDbfJtg5Gs7rrr59IwV0RgFxOUcEIS1s');
     const mapsData = await response.json();
+    // const mapLocation= mapsData.results[0].geometry.location;
     // const countriesTimelineCountry = countriesTimeline.Country;
     
-        mapsLat.push(mapsData[0].Lon);
-        mapsLon.push(mapsData[0].Lat);
+    mapLocation.push(mapsData.results[0].geometry.location);
+        // mapsLon.push(mapsData[0].Lat);
     
-        console.log(place);
+        console.log(mapsData.results[0].geometry.location);
   
 }
 function onDone(){
@@ -185,6 +189,8 @@ document.getElementById("btn-right").addEventListener("click", function(){
         currentIndex = nextIndex;
         console.log(continent.length);
     }
+
+
     
 });
 
@@ -266,21 +272,16 @@ document.getElementById("btn-left").addEventListener("click", function(){
 
 
 
-function myMapfff(Lat, Lon) {
+function myMapfff(location) {
     var mapProp= {
-    center:new google.maps.LatLng(67.71,33.94),
+    // center:new google.maps.LatLng(53.41291,-8.24389),
+   
+
     //   center:new google.maps.LatLng(Lat,Lon),
-      zoom:5,
+      zoom:6
     };
     var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
  }
 
 
- var country = "Germany";
-var geocoder;
-
-geocoder.geocode( {'address' : country}, function(results, status) {
-    if (status == google.maps.GeocoderStatus.OK) {
-        map.setCenter(results[0].geometry.location);
-    }
-});
+ 
