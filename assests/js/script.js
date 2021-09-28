@@ -6,14 +6,15 @@ let continent=[]; //create empty array
 
 window.addEventListener("load", function(){
     getData() ;
-    myMapfff();
+    // myMapfff();
+    drawChart();
+    getTimeData();
+   
+    // getData2(mapLocation) ;
+    // timeLineChart();
 
-    getData2(mapLocation) ;
-    
-
-     console.log(mapLocation);
-    console.log(Object.values(mapLocation[0]))
 });
+
 
 
 const api_url = 'https://api.covid19api.com/summary';
@@ -21,6 +22,8 @@ async function getData() {
     const response = await fetch(api_url);
     const data = await response.json();
     const countries = data.Countries;
+
+    console.log(data);
     
 
     continent=countries;
@@ -37,27 +40,34 @@ async function getData() {
     onDone();
 }
 
-// let countriesTimelineDate= [];
-// let countriesTimelineCases= [];
-// const api_url2 = 'https://api.covid19api.com/country/south-africa/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z';
-// async function getData2(place) {
-//     // const response = await fetch(api_url2);
-//     const response = await fetch('https://api.covid19api.com/country/'+place+'/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z');
-//     const countriesTimeline = await response.json();
-//     // const countriesTimelineCountry = countriesTimeline.Country;
-//     for(i=0; i< countriesTimeline.length; i++){
-//         countriesTimelineDate.push(countriesTimeline[i].Date.slice(0, 10));
-//         countriesTimelineCases.push(countriesTimeline[i].Cases);
-//     }
-
+let countriesTimelineDate= [];
+let countriesTimelineCases= [];
+const api_url2S = 'https://api.covid19api.com/country/south-africa/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z';
+async function getTimeData() {
+    // const response = await fetch(api_url2);
+    // const response = await fetch('https://api.covid19api.com/country/'+place+'/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z');
+    const response = await fetch('https://api.covid19api.com/country/south-africa/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z');
+    const countriesTimeline = await response.json();
+    // const countriesTimelineCountry = countriesTimeline.Country;
+    for(i=0; i< countriesTimeline.length; i++){
+        // countriesTimelineDate.push(countriesTimeline[i].Date.slice(0, 10), countriesTimeline[i].Cases));
+        // countriesTimelineCases.push(countriesTimeline[i].Cases);
+        // console.log(countriesTimeline[i].Date.slice(0, 10), countriesTimeline[i].Cases))
+        countriesTimelineDate.push([countriesTimeline[i].Date.slice(0, 10),countriesTimeline[i].Cases]);
+       
    
-// }
+    }
+    console.log(countriesTimeline[0].Date.slice(0, 10),',', countriesTimeline[0].Cases);
+    console.log(countriesTimelineDate);
+    
+}
 
 
 
 // let mapsLat= [];
 // let mapsLon= [];
 // const api_url2 = 'https://api.covid19api.com/country/Afghanistan/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z';
+
 // async function getData2(place) {
 //     // const response = await fetch(api_url2);
 //     const response = await fetch('https://api.covid19api.com/country/'+place+'/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z');
@@ -71,19 +81,24 @@ async function getData() {
   
 // }
 let mapLocation= [];
-const api_url2 = 'https://maps.googleapis.com/maps/api/geocode/json?address=ireland&key=AIzaSyDlDbfJtg5Gs7rrr59IwV0RgFxOUcEIS1s';
-async function getData2() {
+const api_url2 = 'https://maps.googleapis.com/maps/api/geocode/json?address=ch&key=AIzaSyDlDbfJtg5Gs7rrr59IwV0RgFxOUcEIS1s';
+async function getData2(place) {
     // const response = await fetch(api_url2);
-    const response = await fetch('https://maps.googleapis.com/maps/api/geocode/json?address=ireland&key=AIzaSyDlDbfJtg5Gs7rrr59IwV0RgFxOUcEIS1s');
+    const response = await fetch('https://maps.googleapis.com/maps/api/geocode/json?address='+place+'&key=AIzaSyDlDbfJtg5Gs7rrr59IwV0RgFxOUcEIS1s');
+    // const api_url2 = 'https://maps.googleapis.com/maps/api/geocode/json?address=Afghanistan&key=AIzaSyDlDbfJtg5Gs7rrr59IwV0RgFxOUcEIS1s';
     const mapsData = await response.json();
     // const mapLocation= mapsData.results[0].geometry.location;
     // const countriesTimelineCountry = countriesTimeline.Country;
     
-    mapLocation.push(mapsData.results[0].geometry.location);
+    console.log(JSON.stringify(mapsData));
+    console.log(mapsData.results[0]);
+    // mapLocation.push(mapsData.results[0].geometry.location.lat);
         // mapsLon.push(mapsData[0].Lat);
-    
-        console.log(mapsData.results[0].geometry.location);
-  
+        console.log(mapsData.results[0].geometry.location.lat);
+        console.log(mapsData.results[0].geometry.location.lng);
+        // myMap(mapsData.results[0].geometry.location.lat, mapsData.results[0].geometry.location.lng);
+        // myMap();
+
 }
 function onDone(){
 
@@ -93,6 +108,8 @@ function onDone(){
         total_deaths.innerHTML=continent[0].TotalDeaths;
         newCases.innerHTML=continent[0].NewConfirmed;
         newDeaths.innerHTML=continent[0].NewDeaths;
+        console.log(continent[0].Country);
+        // getData2('ireland');
  
         
 }
@@ -182,9 +199,10 @@ document.getElementById("btn-right").addEventListener("click", function(){
         newCases.innerHTML=continent[nextIndex].NewConfirmed;
         newDeaths.innerHTML=continent[nextIndex].NewDeaths;
         // getData2(continent[nextIndex].Country);
+      
         
-        console.log(mapsLat);
-        console.log(mapsLon);
+        // console.log(mapsLat);
+        // console.log(mapsLon);
     
         currentIndex = nextIndex;
         console.log(continent.length);
@@ -272,16 +290,39 @@ document.getElementById("btn-left").addEventListener("click", function(){
 
 
 
-function myMapfff(location) {
+function myMap() {
     var mapProp= {
-    // center:new google.maps.LatLng(53.41291,-8.24389),
-   
+      center:new google.maps.LatLng(53.1423672,-7.692053599999999),
+    // center:new google.maps.LatLng();
 
-    //   center:new google.maps.LatLng(Lat,Lon),
-      zoom:6
+    //  center:new google.maps.LatLng(lat,lng),
+    //   zoom:6
     };
     var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
  }
-
+ function drawChart() {
+    // var data = google.visualization.arrayToDataTable([
+    //   ['Year', 'Sales', 'Expenses'],
+    //   ['2004',  1000,      400],
+    //   ['2005',  1170,      460],
+    //   ['2006',  660,       1120],
+    //   ['2007',  1030,      540]
+    // ]);
 
  
+    var data = new google.visualization.DataTable();
+data.addColumn('string', 'Task');
+data.addColumn('number', 'Hours per Day');
+data.addRows([
+    countriesTimelineDate
+]);
+    var options = {
+      title: 'Company Performance',
+      curveType: 'function',
+      legend: { position: 'bottom' }
+    };
+
+    var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+    chart.draw(data, options);
+  }
