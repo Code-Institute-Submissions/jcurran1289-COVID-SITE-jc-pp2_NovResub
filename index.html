@@ -14,10 +14,23 @@
   
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart(trydata) {
+        var data = google.visualization.arrayToDataTable(trydata);
+
+        var options = {
+          title: 'Company Performance',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
     </script>
-    
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMBXXBkWR6MeXxKIPh7Iz4G5SulXLnPaw&callback=myMap"></script> -->
 
 
@@ -90,7 +103,7 @@
     </div>
 
 
-    <div id="curve_chart" style="width: 900px; height: 500px"></div>
+    <div id="curve_chart" style="width: 500px; height: 500px"></div>
 
     
         <!-- <div height=50%>
@@ -99,6 +112,8 @@
         </div> -->
     </div>
     <script src="/assests/js/script.js"></script>
+
+
     <script src="/assests/js/chart.js"></script>
 </body>
 
