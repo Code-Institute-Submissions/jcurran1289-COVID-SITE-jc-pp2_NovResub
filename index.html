@@ -13,33 +13,24 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
   
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMBXXBkWR6MeXxKIPh7Iz4G5SulXLnPaw&callback=myMap" async></script> -->
 
-      function drawChart(trydata) {
-        var data = google.visualization.arrayToDataTable(trydata);
-
-        var options = {
-          title: 'Company Performance',
-          curveType: 'function',
-          legend: { position: 'bottom' }
-        };
-
-        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
-        chart.draw(data, options);
-      }
-    </script>
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMBXXBkWR6MeXxKIPh7Iz4G5SulXLnPaw&callback=myMap"></script> -->
-
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMBXXBkWR6MeXxKIPh7Iz4G5SulXLnPaw&callback=initMap&libraries=&v=weekly"
+    async
+  ></script>
 
     <title>Document</title>
 </head>
 
 <body >
+    <iframe
+    width="450"
+    height="250"
+    frameborder="0" style="border:0"
+    src="https://www.google.com/maps/embed/v1/view?key=AIzaSyARgWtIcAm7jZaM4NSzutzcDdq9fh6lfM0&center=-33.8569,151.2152&zoom=18&maptype=satellite" allowfullscreen>
+  </iframe>
 
-    <!-- <div id="googleMap" style="width:100%;height:400px;"></div> -->
 
 
     <h1 class="heading">
@@ -112,7 +103,6 @@
         </div> -->
     </div>
     <script src="/assests/js/script.js"></script>
-
 
     <script src="/assests/js/chart.js"></script>
 </body>

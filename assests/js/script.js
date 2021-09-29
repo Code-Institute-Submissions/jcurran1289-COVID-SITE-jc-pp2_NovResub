@@ -47,7 +47,7 @@ const api_url2S = 'https://api.covid19api.com/country/south-africa/status/confir
 async function getTimeData(place) {
     // const response = await fetch(api_url2);
     // const response = await fetch('https://api.covid19api.com/country/'+place+'/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z');
-    const response = await fetch('https://api.covid19api.com/country/'+place+'/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z');
+    const response = await fetch('https://api.covid19api.com/country/'+place.replace(/\s/g, '-')+'/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z');
     const countriesTimeline = await response.json();
     countriesTimelineDate= [['Date', 'Cases']]
     // countriesTimelineDate.push('Date', 'Cases');
@@ -82,9 +82,9 @@ async function getTimeData(place) {
 // }
 let mapLocation= [];
 const api_url2 = 'https://maps.googleapis.com/maps/api/geocode/json?address=ch&key=AIzaSyDlDbfJtg5Gs7rrr59IwV0RgFxOUcEIS1s';
-async function getData2(place) {
+async function getMapData(place) {
     // const response = await fetch(api_url2);
-    const response = await fetch('https://maps.googleapis.com/maps/api/geocode/json?address='+place+'&key=AIzaSyDlDbfJtg5Gs7rrr59IwV0RgFxOUcEIS1s');
+    const response = await fetch('https://maps.googleapis.com/maps/api/geocode/json?address='+place.replace(/\s/g, '-')+'&key=AIzaSyDlDbfJtg5Gs7rrr59IwV0RgFxOUcEIS1s');
     // const api_url2 = 'https://maps.googleapis.com/maps/api/geocode/json?address=Afghanistan&key=AIzaSyDlDbfJtg5Gs7rrr59IwV0RgFxOUcEIS1s';
     const mapsData = await response.json();
     // const mapLocation= mapsData.results[0].geometry.location;
@@ -101,7 +101,7 @@ async function getData2(place) {
 
 }
 function onDone(){
-
+    initMap();
      
         continentName.innerHTML=continent[0].Country;
         total_cases.innerHTML=continent[0].TotalConfirmed;
@@ -246,23 +246,35 @@ document.getElementById("btn-left").addEventListener("click", function(){
 });
 
  
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart(trydata) {
+  var data = google.visualization.arrayToDataTable(trydata);
+
+  var options = {
+    title: 'Company Performance',
+    curveType: 'function',
+    legend: { position: 'bottom' }
+  };
+
+  var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+  chart.draw(data, options);
+};
 
 
-
-
-let testd =[
-    ['Year', 'Sales'],
-    ['2004',  1000],
-    ['2005',  1170],
-    ['2006',  660],
-    ['2007',  1030]
-  ]
-
-  let testd2 =[
-    ['Year', 'Sales'],
-    ['2004',  10],
-    ['2005',  11],
-    ['2006',  60],
-    ['2007',  10]
-  ]
-  console.log(testd);
+function initMap() {
+    // The location of Uluru
+    const uluru = { lat: -25.344, lng: 131.036 };
+    // The map, centered at Uluru
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 4,
+      center: uluru,
+    });
+    // The marker, positioned at Uluru
+    const marker = new google.maps.Marker({
+      position: uluru,
+      map: map,
+    });
+  }
