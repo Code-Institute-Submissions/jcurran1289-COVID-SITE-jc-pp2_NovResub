@@ -81,7 +81,7 @@ async function getTimeData(place) {
   
 // }
 let mapLocation= [];
-const api_url2 = 'https://maps.googleapis.com/maps/api/geocode/json?address=ch&key=AIzaSyDlDbfJtg5Gs7rrr59IwV0RgFxOUcEIS1s';
+const api_url2 = 'https://maps.googleapis.com/maps/api/geocode/json?address=ireland&key=AIzaSyDlDbfJtg5Gs7rrr59IwV0RgFxOUcEIS1s';
 async function getMapData(place) {
     // const response = await fetch(api_url2);
     const response = await fetch('https://maps.googleapis.com/maps/api/geocode/json?address='+place.replace(/\s/g, '-')+'&key=AIzaSyDlDbfJtg5Gs7rrr59IwV0RgFxOUcEIS1s');
@@ -94,8 +94,8 @@ async function getMapData(place) {
     // console.log(mapsData.results[0]);
     // mapLocation.push(mapsData.results[0].geometry.location.lat);
         // // mapsLon.push(mapsData[0].Lat);
-        // console.log(mapsData.results[0].geometry.location.lat);
-        // console.log(mapsData.results[0].geometry.location.lng);
+        console.log(mapsData.results[0].geometry.location.lat);
+        console.log(mapsData.results[0].geometry.location.lng);
         // myMap(mapsData.results[0].geometry.location.lat, mapsData.results[0].geometry.location.lng);
         // myMap();
 
