@@ -276,7 +276,7 @@ function drawChart(trydata) {
   var data = google.visualization.arrayToDataTable(trydata);
 
   var options = {
-    title: 'Company Performance',
+    title: 'COVID Timeseriers',
     curveType: 'function',
     legend: { position: 'bottom' }
   };

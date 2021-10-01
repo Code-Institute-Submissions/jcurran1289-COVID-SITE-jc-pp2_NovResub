@@ -13,100 +13,106 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
   
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMBXXBkWR6MeXxKIPh7Iz4G5SulXLnPaw&callback=myMap" async></script> -->
-
-    <!-- <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMBXXBkWR6MeXxKIPh7Iz4G5SulXLnPaw&callback=initMap&libraries=&v=weekly"
-    async
-  ></script> -->
 
     <title>Document</title>
 </head>
 
-<body >
-    <iframe
-    id="map"
-    width="450"
-    height="250"
-    frameborder="0" style="border:0"
-    scr="">
-
-  </iframe>
-  
+<body>
 
 
-    <h1 class="heading">
-        <img class="logo" src="assets/images/logo.png" alt="logo"> COVID 2020 by Continent
-    </h1>
-<div>
-    <div class="main-container" >
-        
-       <div class="symptoms-area">
-        fgfdgfd
-       </div>
-      
-  
+<div id="entire">
+    <div>
+        <div class="heading">
+            <h1 class="heading">
+                <img class="logo" src="assets/images/logo.png" alt="logo"> COVID 2020 by Continent
+            </h1>
+    </div>
+        <div class="curve_chart">
+                <div id="curve_chart" class="curve_chart">
+                </div>
+        </div>
+    </div>
 
-      <div class="stats-area">
+
 
         <div>
-            <div>
-                <button class="btn-big-left" id="btn-left">
-                    <i class="fas fa-arrow-left"></i>
-                </button>
 
-            </div>
-            <div>
-                <h1 id="continentHeader"></h1>
-            <p class="stats"><B>Total Cases:</B>
-                <span id="total_cases" ></span></p>
+
+            <div class="main-container" >
                 
-                <p class="stats"></p>Total Deaths:
-                <span id="total_deaths" ></span></p>
-                <p class="stats">New Confirmed:
-                <span id="newCases" ></span></p>
-                <p class="stats"></p>New Deaths:
-                <span id="newDeaths"></span></p>
-
+            <div class="symptoms-area">
+                <div id="map_position" class="map_position">
+                    <iframe
+                    id="map"
+                    width="450"
+                    height="250"
+                    frameborder="0" style="border:0"
+                    
+                    scr="" allowfullscreen></iframe>
+                </div>
             </div>
-            <div>
+            
+        
+
+            <div class="stats-area">
+
+                <div>
+                    <div id="left-button">
+                        <button class="btn-big-left" id="btn-left">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+
+                    </div>
+                    <div>
+                        <h1 id="continentHeader"></h1>
+                        <p class="stats"><B>Total Cases:</B>
+                        <span id="total_cases" ></span></p>
+                        
+                        <p class="stats"></p>Total Deaths:
+                        <span id="total_deaths" ></span></p>
+                        <p class="stats">New Confirmed:
+                        <span id="newCases" ></span></p>
+                        <p class="stats"></p>New Deaths:
+                        <span id="newDeaths"></span></p>
+
+                    </div>
+                    
+                    <div id="right-button">
+                        <button class="btn-big-right"  id="btn-right">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    
+                </div>
+
+            
+
+                    <div class="Continent-selection">
+                        <label for="continent_input">Continent</label>
+                        <input type="text" id="continent_input" name="name">
+
+                        <button class="btn big -- search" id="search-button">Search
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+            </div>
+
+            <!-- <div class="text-area">
+                klmlkm
+            </div> -->
+            </div>
+
+
                 
-            <button class="btn-big-right"  id="btn-right">
-                <i class="fas fa-arrow-right"></i>
-            </button>
-
+        
+                
+                
+                </div> 
             </div>
-        </div>
+            <script src="/assests/js/script.js"></script>
 
-       
-
-            <div class="Continent-selection">
-                <label for="continent_input">Continent</label>
-                <input type="text" id="continent_input" name="name">
-
-                <button class="btn big -- search" id="search-button">Search
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-      </div>
-
-      <div class="text-area">
-        klmlkm
-       </div>
-    </div>
-
-
-    <div id="curve_chart" style="width: 500px; height: 500px"></div>
-
-    
-        <!-- <div height=50%>
-            <canvas id="chart" height= 50%></canvas>
-           
-        </div> -->
-    </div>
-    <script src="/assests/js/script.js"></script>
-
-    <script src="/assests/js/chart.js"></script>
+            <script src="/assests/js/chart.js"></script>
+</div>
 </body>
 
 </html>
