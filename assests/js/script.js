@@ -10,7 +10,7 @@ window.addEventListener("load", function(){
     
     getTimeData();
     
-   
+    // getMapData("ireland");
     // getData2(mapLocation) ;
     // timeLineChart();
 
@@ -24,8 +24,6 @@ async function getData() {
     const data = await response.json();
     const countries = data.Countries;
 
-    console.log(data);
-    
 
     continent=countries;
     // var maxCases = 0;
@@ -37,7 +35,7 @@ async function getData() {
     // }
 
   
-     
+    onDoneMap
     onDone();
 }
 
@@ -58,8 +56,7 @@ async function getTimeData(place) {
         countriesTimelineDate.push([countriesTimeline[i].Date.slice(0, 10),countriesTimeline[i].Cases]);
     }
     drawChart(countriesTimelineDate);
-    console.log(countriesTimelineDate);
-    
+
 }
 
 
@@ -78,39 +75,57 @@ async function getTimeData(place) {
 //         mapsLon.push(mapsData[0].Lat);
     
 //         console.log(place);
-  
+
 // }
-let mapLocation= [];
+let mapLocation;
+let mapLocationlng= [];
 const api_url2 = 'https://maps.googleapis.com/maps/api/geocode/json?address=ireland&key=AIzaSyDlDbfJtg5Gs7rrr59IwV0RgFxOUcEIS1s';
 async function getMapData(place) {
     // const response = await fetch(api_url2);
-    const response = await fetch('https://maps.googleapis.com/maps/api/geocode/json?address='+place.replace(/\s/g, '-')+'&key=AIzaSyDlDbfJtg5Gs7rrr59IwV0RgFxOUcEIS1s');
+    const response = await fetch('https://maps.googleapis.com/maps/api/geocode/json?address='+place+'&key=AIzaSyDlDbfJtg5Gs7rrr59IwV0RgFxOUcEIS1s');
     // const api_url2 = 'https://maps.googleapis.com/maps/api/geocode/json?address=Afghanistan&key=AIzaSyDlDbfJtg5Gs7rrr59IwV0RgFxOUcEIS1s';
     const mapsData = await response.json();
     // const mapLocation= mapsData.results[0].geometry.location;
     // const countriesTimelineCountry = countriesTimeline.Country;
-    
+   
     // console.log(JSON.stringify(mapsData));
-    // console.log(mapsData.results[0]);
+ 
     // mapLocation.push(mapsData.results[0].geometry.location.lat);
-        // // mapsLon.push(mapsData[0].Lat);
-        console.log(mapsData.results[0].geometry.location.lat);
+    // mapLocationlat.push(mapsData.results[0].geometry.location.lat);
+    // mapLocationlng.push(mapsData.results[0].geometry.location.lng);
+    mapLocation="https://www.google.com/maps/embed/v1/view?key=AIzaSyCJaLEWACVCvcKIEyUx-1BHi8a6iP0X3VQ&center="+mapsData.results[0].geometry.location.lat+","+mapsData.results[0].geometry.location.lng+"&zoom=6&maptype=roadmap";
+    document.getElementById("map").src =mapLocation;
+    
+    console.log(mapsData.results[0].geometry.location.lat);
         console.log(mapsData.results[0].geometry.location.lng);
+        console.log(mapLocation);
         // myMap(mapsData.results[0].geometry.location.lat, mapsData.results[0].geometry.location.lng);
         // myMap();
+       
 
 }
+
+
+function onDoneMap(){
+    
+
+  
+   
+    
+}
+
 function onDone(){
-    initMap();
+    
      
         continentName.innerHTML=continent[0].Country;
         total_cases.innerHTML=continent[0].TotalConfirmed;
         total_deaths.innerHTML=continent[0].TotalDeaths;
         newCases.innerHTML=continent[0].NewConfirmed;
         newDeaths.innerHTML=continent[0].NewDeaths;
-        getTimeData(continent[0].Country)
-        // getData2('ireland');
- 
+        getMapData(continent[0].Country);
+        getTimeData(continent[0].Country);
+      
+       
         
 }
 
@@ -159,7 +174,10 @@ document.getElementById("search-button").addEventListener("click", function () {
             total_deaths.innerHTML=result.TotalDeaths;
             newCases.innerHTML=result.NewConfirmed;
             newDeaths.innerHTML=result.NewDeaths;
+            getMapData(result.Country);
             getTimeData(result.Country);
+            
+          
 
             currentIndex = newIndex; //set the new current index
         }else{
@@ -186,6 +204,7 @@ document.getElementById("btn-right").addEventListener("click", function(){
         total_deaths.innerHTML=continent[0].TotalDeaths;
         newCases.innerHTML=continent[0].NewConfirmed;
         newDeaths.innerHTML=continent[0].NewDeaths;
+        getMapData(continent[0].Country);
         getTimeData(continent[0].Country);
        
     
@@ -199,12 +218,12 @@ document.getElementById("btn-right").addEventListener("click", function(){
         total_deaths.innerHTML=continent[nextIndex].TotalDeaths;
         newCases.innerHTML=continent[nextIndex].NewConfirmed;
         newDeaths.innerHTML=continent[nextIndex].NewDeaths;
+        getMapData(continent[nextIndex].Country);
         getTimeData(continent[nextIndex].Country);
        
       
         
-        // console.log(mapsLat);
-        // console.log(mapsLon);
+
     
         currentIndex = nextIndex;
         console.log(continent.length);
@@ -227,6 +246,8 @@ document.getElementById("btn-left").addEventListener("click", function(){
     total_deaths.innerHTML=continent[continent.length-1].TotalDeaths;
     newCases.innerHTML=continent[continent.length-1].NewConfirmed;
     newDeaths.innerHTML=continent[continent.length-1].NewDeaths;
+    getMapData(continent[continent.length-1].Country);
+    getTimeData(continent[continent.length-1].Country);
 
     currentIndex=continent.length-1;
    }else{
@@ -238,9 +259,11 @@ document.getElementById("btn-left").addEventListener("click", function(){
     total_deaths.innerHTML=continent[prevIndex].TotalDeaths;
     newCases.innerHTML=continent[prevIndex].NewConfirmed;
     newDeaths.innerHTML=continent[prevIndex].NewDeaths;
+    getMapData(continent[prevIndex].Country);
+    getTimeData(continent[prevIndex].Country);
 
     currentIndex = prevIndex;
-    console.log(continent.length);
+  
 }
 
 });
@@ -264,17 +287,3 @@ function drawChart(trydata) {
 };
 
 
-function initMap() {
-    // The location of Uluru
-    const uluru = { lat: -25.344, lng: 131.036 };
-    // The map, centered at Uluru
-    const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 4,
-      center: uluru,
-    });
-    // The marker, positioned at Uluru
-    const marker = new google.maps.Marker({
-      position: uluru,
-      map: map,
-    });
-  }
