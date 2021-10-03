@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway%7CRighteous" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-  
+
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <title>Document</title>
@@ -20,99 +20,89 @@
 <body>
 
 
-<div id="entire">
-    <div>
-        <div class="heading">
-            <h1 class="heading">
-                <img class="logo" src="assets/images/logo.png" alt="logo"> COVID 2020 by Continent
-            </h1>
-    </div>
-        <div class="curve_chart">
+    <div id="entire">
+        <!--  entire box -->
+        <div>
+            <!-- heading and chart box -->
+            <div class="heading">
+                <h1 class="heading">
+                    <img class="logo" src="assets/images/logo.png" alt="logo"> COVID 2020 by Continent
+                </h1>
+            </div>
+            <div class="curve_chart">
                 <div id="curve_chart" class="curve_chart">
                 </div>
-        </div>
-    </div>
-
-
-
-        <div>
-
-
-            <div class="main-container" >
-                
-            <div class="symptoms-area">
-                <div id="map_position" class="map_position">
-                    <iframe
-                    id="map"
-                    width="450"
-                    height="250"
-                    frameborder="0" style="border:0"
-                    
-                    scr="" allowfullscreen></iframe>
-                </div>
             </div>
-            
-        
+        </div><!-- heading and chart box -->
 
-            <div class="stats-area">
+        <div class="main-container">
+            <!-- main container-->
+            <div class="maps-area">
+                <!--  map box -->
+                <div id="map_position" class="map_position">
+                    <iframe id="map"  scr=""
+                        allowfullscreen></iframe>
+                </div>
+            </div><!--  map box -->
 
-                <div>
+
+
+            <div class="stats-area"> <!--  stats box -->
+               
+
+                <div><!--  stats and buttons -->
+                    
                     <div id="left-button">
+                        <!--  left button -->
                         <button class="btn-big-left" id="btn-left">
                             <i class="fas fa-arrow-left"></i>
                         </button>
 
-                    </div>
+                    </div><!--  left button -->
                     <div>
+                        <!--  stats -->
                         <h1 id="continentHeader"></h1>
                         <p class="stats"><B>Total Cases:</B>
-                        <span id="total_cases" ></span></p>
-                        
+                            <span id="total_cases"></span></p>
+
                         <p class="stats"></p>Total Deaths:
-                        <span id="total_deaths" ></span></p>
+                        <span id="total_deaths"></span></p>
                         <p class="stats">New Confirmed:
-                        <span id="newCases" ></span></p>
+                            <span id="newCases"></span></p>
                         <p class="stats"></p>New Deaths:
                         <span id="newDeaths"></span></p>
 
-                    </div>
-                    
+                    </div> <!--  stats -->
+
                     <div id="right-button">
-                        <button class="btn-big-right"  id="btn-right">
+                        <!--  right button -->
+                        <button class="btn-big-right" id="btn-right">
                             <i class="fas fa-arrow-right"></i>
                         </button>
-                    </div>
-                    
-                </div>
+                    </div> <!--  right button -->
 
-            
-
-                    <div class="Continent-selection">
-                        <label for="continent_input">Continent</label>
-                        <input type="text" id="continent_input" name="name">
-
-                        <button class="btn big -- search" id="search-button">Search
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-            </div>
-
-            <!-- <div class="text-area">
-                klmlkm
-            </div> -->
-            </div>
+                </div><!--  stats and buttons -->
 
 
-                
-        
-                
-                
-                </div> 
-            </div>
-            <script src="/assests/js/script.js"></script>
 
-            <script src="/assests/js/chart.js"></script>
-</div>
+                <div class="Continent-selection">
+                    <!-- continent search -->
+                    <label for="continent_input">Continent</label>
+                    <input type="text" id="continent_input" name="name">
+
+                    <button class="btn big -- search" id="search-button">Search
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div><!-- continent search -->
+            </div> <!--  stats box -->
+
+        </div> <!-- main container-->
+
+
+    </div> <!--  entire box -->
+    <script src="/assests/js/script.js"></script>
+
+    <script src="/assests/js/chart.js"></script>
 </body>
 
 </html>
