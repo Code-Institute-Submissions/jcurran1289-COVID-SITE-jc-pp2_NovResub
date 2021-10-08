@@ -6,8 +6,15 @@ body {
     font-family: 'Open Sans', Arial, sans-serif;
 	/* margin: 0; */
 	background-color: white;
-    text-align: center;
+    
     height: 100%;
+}
+
+.entire {
+    height: 100%;
+}
+.headingChart{
+    height: 50%;
 }
 
 /* --------- Heading */
@@ -15,32 +22,23 @@ body {
 .heading {
     text-align: center;
     font-size: 2.5rem;
+    margin-bottom: 0px;
+    /* height: 20%;   */
 }
-
-.logo {
-    height: 40px;
-    padding-right: 5px;
-}
-
-.stats{
-    line-height: 75px;
-    
+.curve_chart{
+    width: 100%; 
+    height: 450px;  
+    color: '#871b47';
+    margin-bottom: 0px;
+    /* height: 80%;   */
 }
 
 .main-container{
-    width: 66%;
+    width: 100%;
+    
+
     margin: 0 auto; 
     
-}
-
-.symptoms-area{
-
-
-    /* border: 5px solid black; */
-    float:left; 
-    /* background:Red; */
-    width:25%;
-    height:280px;
 }
 
 .stats-area{
@@ -52,7 +50,36 @@ body {
     /* background:Green; */
     width:50%;
     height:280px;
+    /* height: 50%;   */
+    margin: 0 auto; 
 }
+
+.maps-area{
+ 
+    display: table-row; 
+    height: 100%; 
+    width:50%;
+    overflow: hidden 
+}
+.maps-area iframe{
+ 
+    width: 200;
+    height: 100;
+    border: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+.logo {
+    height: 40px;
+    padding-right: 5px;
+}
+
+.stats{
+    line-height: 75px;
+    
+}
+
 
 
 
@@ -69,29 +96,8 @@ body {
     top: -50%; 
 }
 
-.curve_chart{
-    width: 100%; 
-    height: 450px;  
-    color: '#871b47',
-}
 
-.heading{
-    margin-bottom: 0px;
-}
 
-.maps-area{
- 
-    display: table-row; 
-    height: 100%; 
    
-    overflow: hidden 
-}
-.maps-area iframe{
- 
-    width: 200;
-    height: 100;
-    border: none;
-    margin: 0;
-    padding: 0;
-    display: block;
-}
+
+

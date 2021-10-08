@@ -61,47 +61,23 @@ async function getTimeData(place) {
 
 
 
-// let mapsLat= [];
-// let mapsLon= [];
-// const api_url2 = 'https://api.covid19api.com/country/Afghanistan/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z';
 
-// async function getData2(place) {
-//     // const response = await fetch(api_url2);
-//     const response = await fetch('https://api.covid19api.com/country/'+place+'/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z');
-//     const mapsData = await response.json();
-//     // const countriesTimelineCountry = countriesTimeline.Country;
-    
-//         mapsLat.push(mapsData[0].Lon);
-//         mapsLon.push(mapsData[0].Lat);
-    
-//         console.log(place);
-
-// }
 let mapLocation;
 let mapLocationlng= [];
 const api_url2 = 'https://maps.googleapis.com/maps/api/geocode/json?address=ireland&key=AIzaSyDlDbfJtg5Gs7rrr59IwV0RgFxOUcEIS1s';
 async function getMapData(place) {
-    // const response = await fetch(api_url2);
+
     const response = await fetch('https://maps.googleapis.com/maps/api/geocode/json?address='+place+'&key=AIzaSyDlDbfJtg5Gs7rrr59IwV0RgFxOUcEIS1s');
-    // const api_url2 = 'https://maps.googleapis.com/maps/api/geocode/json?address=Afghanistan&key=AIzaSyDlDbfJtg5Gs7rrr59IwV0RgFxOUcEIS1s';
+
     const mapsData = await response.json();
-    // const mapLocation= mapsData.results[0].geometry.location;
-    // const countriesTimelineCountry = countriesTimeline.Country;
-   
-    // console.log(JSON.stringify(mapsData));
- 
-    // mapLocation.push(mapsData.results[0].geometry.location.lat);
-    // mapLocationlat.push(mapsData.results[0].geometry.location.lat);
-    // mapLocationlng.push(mapsData.results[0].geometry.location.lng);
+
     mapLocation="https://www.google.com/maps/embed/v1/view?key=AIzaSyCJaLEWACVCvcKIEyUx-1BHi8a6iP0X3VQ&center="+mapsData.results[0].geometry.location.lat+","+mapsData.results[0].geometry.location.lng+"&zoom=6&maptype=roadmap";
     document.getElementById("map").src =mapLocation;
     
     console.log(mapsData.results[0].geometry.location.lat);
         console.log(mapsData.results[0].geometry.location.lng);
         console.log(mapLocation);
-        // myMap(mapsData.results[0].geometry.location.lat, mapsData.results[0].geometry.location.lng);
-        // myMap();
-       
+
 
 }
 
@@ -181,10 +157,10 @@ document.getElementById("search-button").addEventListener("click", function () {
 
             currentIndex = newIndex; //set the new current index
         }else{
-            alert("we were unable to find youyr continent")
+            alert("Unable to find the country")
         }
     } else {
-        alert("Please enter a continent")
+        alert("Please enter a country")
     }
 });
 
