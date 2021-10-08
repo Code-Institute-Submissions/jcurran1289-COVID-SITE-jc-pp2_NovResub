@@ -160,7 +160,7 @@ document.getElementById("search-button").addEventListener("click", function () {
             alert("Unable to find the country")
         }
     } else {
-        alert("Please enter a country")
+        alert("Please enter a countrygit")
     }
 });
 

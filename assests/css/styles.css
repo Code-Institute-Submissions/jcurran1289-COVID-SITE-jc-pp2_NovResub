@@ -1,4 +1,14 @@
-
+* {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  *:before,
+  *:after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+  }
 body {
 
 
@@ -10,9 +20,32 @@ body {
     height: 100%;
 }
 
+
 .entire {
     height: 100%;
 }
+
+.container{
+    border: 1px solid brown;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+    max-width: 1170px;
+    overflow: hidden;
+}
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+  
+  .col {
+    padding-right: 15px;
+    padding-left: 15px;
+    float: left;
+  }
+  
+
 .headingChart{
     height: 50%;
 }
@@ -30,44 +63,48 @@ body {
     height: 450px;  
     color: '#871b47';
     margin-bottom: 0px;
+    /* border: 1px solid green; */
     /* height: 80%;   */
 }
 
 .main-container{
     width: 100%;
-    
-
+    height: 50%;
+    /* border: 1px solid green; */
     margin: 0 auto; 
     
 }
 
 .stats-area{
     
-    /* width: 1000px;
-    height: 0;  */
 
-    float:right; 
-    /* background:Green; */
+    text-align: center;
+ 
+
+    float:left; 
+  
     width:50%;
     height:280px;
-    /* height: 50%;   */
-    margin: 0 auto; 
+
 }
 
 .maps-area{
- 
-    display: table-row; 
+    float:left; 
+    display: block; 
     height: 100%; 
     width:50%;
-    overflow: hidden 
+    overflow: hidden;
+    
+    /* border: 1px solid green; */
 }
+
 .maps-area iframe{
  
-    width: 200;
-    height: 100;
+    width: 100%;
+    height: 390px;
     border: none;
     margin: 0;
-    padding: 0;
+    
     display: block;
 }
 .logo {
@@ -80,9 +117,6 @@ body {
     
 }
 
-
-
-
 .btn-big-left{
     float: left;
  
@@ -90,14 +124,28 @@ body {
      top: -50%; 
 }
 .btn-big-right{
-    float: right;
+    float: left;
     
     right: 200px;
     top: -50%; 
 }
 
 
-
-   
-
-
+@media (min-width: 768px) {
+    .container {
+      width: 750px;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .container {
+      width: 970px;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .container {
+      width: 1170px;
+    }
+  }
+  

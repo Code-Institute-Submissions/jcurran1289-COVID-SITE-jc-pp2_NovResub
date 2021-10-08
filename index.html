@@ -13,6 +13,26 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="/assests/js/chart.js"></script>
+    <style>
+        @media (min-width: 768px) {
+            .container {
+                width: 750px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                width: 970px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                width: 1170px;
+            }
+        }
+    </style>
 
     <title>Document</title>
 </head>
@@ -20,13 +40,13 @@
 <body>
 
 
-    <div id="entire">
+    <div id="entire" class="container">
         <!--  entire box -->
         <div class="headingChart">
             <!-- heading and chart box -->
             <div>
                 <h1 class="heading">
-                    <img class="logo" src="assests/images/logo.png" alt="logo"> 
+                    <img class="logo" src="assests/images/logo.png" alt="logo">
                 </h1>
             </div>
             <div class="curve_chart">
@@ -35,30 +55,23 @@
             </div>
         </div><!-- heading and chart box -->
 
-        <div class="main-container">
+        <div class="main-container row">
             <!-- main container-->
-            <div class="maps-area">
+
+            <div class="maps-area col">
                 <!--  map box -->
                 <div id="map_position" class="map_position">
-                    <iframe id="map"  scr=""
-                        allowfullscreen></iframe>
+                    <iframe id="map" scr="" allowfullscreen></iframe>
                 </div>
             </div><!--  map box -->
 
 
 
-            <div class="stats-area"> <!--  stats box -->
-               
+            <div class="stats-area col">
+                <!--  stats box -->
 
-                <div><!--  stats and buttons -->
-                    
-                    <div id="left-button">
-                        <!--  left button -->
-                        <button class="btn-big-left" id="btn-left">
-                            <i class="fas fa-arrow-left"></i>
-                        </button>
 
-                    </div><!--  left button -->
+                <div>
                     <div>
                         <!--  stats -->
                         <h1 id="continentHeader"></h1>
@@ -71,29 +84,50 @@
                             <span id="newCases"></span></p>
                         <p class="stats"></p>New Deaths:
                         <span id="newDeaths"></span></p>
+                    </div>
+                    <div class="row">
+                        <div class="col">
 
-                    </div> <!--  stats -->
+                            <div id="left-button">
+                                <!--  left button -->
+                                <button class="btn-big-left" id="btn-left">
+                                    <i class="fas fa-arrow-left"></i>
+                                </button>
+            
+                            </div><!--  left button -->
+                        </div>
+                        <div class="col">
 
-                    <div id="right-button">
-                        <!--  right button -->
-                        <button class="btn-big-right" id="btn-right">
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div> <!--  right button -->
+                            <div class="Continent-selection">
+                                <!-- continent search -->
+                                <label for="continent_input">Continent</label>
+                                <input type="text" id="continent_input" name="name">
 
-                </div><!--  stats and buttons -->
+                                <button class="btn big -- search" id="search-button">Search
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div><!-- continent search -->
+                        </div>
+                        <div class="col">
+                            <div id="right-button">
+                                <!--  right button -->
+                                <button class="btn-big-right" id="btn-right">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div> <!--  right button -->
+            
+            
+                        </div>
+                    </div>
+
+
+                </div> <!--  stats -->
 
 
 
-                <div class="Continent-selection">
-                    <!-- continent search -->
-                    <label for="continent_input">Continent</label>
-                    <input type="text" id="continent_input" name="name">
 
-                    <button class="btn big -- search" id="search-button">Search
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div><!-- continent search -->
+
+
             </div> <!--  stats box -->
 
         </div> <!-- main container-->
@@ -102,7 +136,7 @@
     </div> <!--  entire box -->
     <script src="/assests/js/script.js"></script>
 
-    <script src="/assests/js/chart.js"></script>
+
 </body>
 
 </html>
