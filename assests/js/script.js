@@ -45,21 +45,18 @@ const api_url2S = 'https://api.covid19api.com/country/south-africa/status/confir
 async function getTimeData(place) {
     // const response = await fetch(api_url2);
     // const response = await fetch('https://api.covid19api.com/country/'+place+'/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z');
-    const response = await fetch('https://api.covid19api.com/country/'+place.replace(/\s/g, '-')+'/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z');
+    // const response = await fetch('https://api.covid19api.com/country/'+place.replace(/\s/g, '-')+'/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z');
+    const response = await fetch('https://api.covid19api.com/country/'+place+'/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z');
     const countriesTimeline = await response.json();
     countriesTimelineDate= [['Date', 'Cases']]
     // countriesTimelineDate.push('Date', 'Cases');
     for(i=0; i< countriesTimeline.length; i++){
-        // countriesTimelineDate.push(countriesTimeline[i].Date.slice(0, 10), countriesTimeline[i].Cases));
-        // countriesTimelineCases.push(countriesTimeline[i].Cases);
-        // console.log(countriesTimeline[i].Date.slice(0, 10), countriesTimeline[i].Cases))
+
         countriesTimelineDate.push([countriesTimeline[i].Date.slice(0, 10),countriesTimeline[i].Cases]);
     }
     drawChart(countriesTimelineDate);
 
 }
-
-
 
 
 let mapLocation;
@@ -81,12 +78,8 @@ async function getMapData(place) {
 
 }
 
-
 function onDoneMap(){
-    
-
   
-   
     
 }
 
@@ -101,11 +94,8 @@ function onDone(){
         getMapData(continent[0].Country);
         getTimeData(continent[0].Country);
       
-       
-        
+   
 }
-
-
 
 
 
@@ -160,7 +150,7 @@ document.getElementById("search-button").addEventListener("click", function () {
             alert("Unable to find the country")
         }
     } else {
-        alert("Please enter a countrygit")
+        alert("Please enter a country")
     }
 });
 
@@ -196,9 +186,7 @@ document.getElementById("btn-right").addEventListener("click", function(){
         newDeaths.innerHTML=continent[nextIndex].NewDeaths;
         getMapData(continent[nextIndex].Country);
         getTimeData(continent[nextIndex].Country);
-       
-      
-        
+
 
     
         currentIndex = nextIndex;
@@ -255,6 +243,8 @@ function drawChart(trydata) {
     title: 'COVID Timeseriers',
     curveType: 'function',
     legend: { position: 'bottom' }
+   
+    
   };
 
   var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
