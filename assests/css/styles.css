@@ -128,12 +128,12 @@ h1{
 
   
 .my-container {
-    /* border: 1px solid green; */
+    border: 1px solid green;
 }
 
 .my-row {
-    /* border: 3px solid orange; */
-    height: 50%;
+    border: 3px solid orange;
+    /* height: 50%; */
  
 }
 

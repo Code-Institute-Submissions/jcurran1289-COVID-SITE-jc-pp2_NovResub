@@ -22,24 +22,23 @@
 <body>
 
 
-    <div class="container-fluid my-container">
+    <div class="container my-container">
         <!--  entire box -->
-        <div class="row  my-row">
-            
-                <div class="row my-row">
-                    <h1 class="heading">
-                        COVID-19 Dashboard
-                    </h1>
-                </div>
-                <div class="row my-row">
-                    <!-- <div class="col my-col "> -->
-                    <div class="curve_chart">
-                        <div id="curve_chart" class="curve_chart">
-                        </div>
+        <div class="row my-row">
+
+            <div class="col-md-12 my-col">
+                <h1 class="heading">
+                    COVID-19 Dashboard
+                </h1>
+
+                <!-- <div class="col my-col "> -->
+                <div class="curve_chart">
+                    <div id="curve_chart" class="curve_chart">
                     </div>
-                    <!-- </div> -->
                 </div>
-            
+                <!-- </div> -->
+            </div>
+
             <!-- end of col -->
         </div>
         <!-- end of row -->
@@ -47,56 +46,54 @@
         <div class="row my-row ">
 
             <!-- main container-->
-            <div class="col my-col ">
+            <!-- <div class="col my-col "> -->
+            <div class="col-md-6 my-col">
                 <!-- 
                 <div id="map_position" class="map_position"> -->
-                <iframe id="map" style="border-style: none;width: 100%; height: 100%;" scr="https://www.google.com/maps/embed/v1/view?key=AIzaSyCJaLEWACVCvcKIEyUx-1BHi8a6iP0X3VQ&center=33.93911, 67.709953&zoom=6&maptype=roadmap" allowfullscreen></iframe>
+                <iframe id="map" style="border-style: none;width: 100%; height: 100%;"
+                    src="https://www.google.com/maps/embed/v1/view?key=AIzaSyCJaLEWACVCvcKIEyUx-1BHi8a6iP0X3VQ&center=33.93911,67.709953&zoom=6&maptype=roadmap"
+                    allowfullscreen></iframe>
                 <!-- </div> -->
 
             </div>
             <!-- end of col -->
-            <div class="col my-col ">
-                <div class="row my-row">
-                    <div class="col-2 my-col ">
-                        <div class="left-button ">
-                            <button class="btn--big btn-big-left" id="btn-left">
-                                <i class="fas fa-arrow-left"></i>
-                            </button>
-                        </div>
-                    </div>
+            <div class="col-md-6 my-col">
 
-                    <div class="col-8 my-col ">
-
-                        <h1 id="continentHeader" class="stats"></h1>
-
-                        <p class="stats"><B>Total Cases:</B>
-                            <span id="total_cases"></span></p>
-
-                        <p class="stats">Total Deaths:
-                            <span id="total_deaths"></span></p>
-                        <p class="stats">New Confirmed:
-                            <span id="newCases"></span></p>
-                        <p class="stats">New Deaths:
-                            <span id="newDeaths"></span></p>
-                        <div class="stats-search">
-                            <!-- <label for="continent_input"></label> -->
-                            <input type="text" id="continent_input" name="name" placeholder="Country">
-
-                            <button class="btn big -- search" id="search-button">Search
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-
-                    </div>
-                    <div class="col-2 my-col ">
-
-                        <div class="right-button">
-                            <button class="btn--big btn-big-right" id="btn-right">
-                                <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                    </div>
+                <div class="left-button ">
+                    <button class="btn--big btn-big-left float-left" id="btn-left">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
                 </div>
+<div class="col-md-6 my-col"></div>
+                <h1 id="continentHeader" class="stats"></h1>
+
+                <p class="stats"><B>Total Cases:</B>
+                    <span id="total_cases"></span></p>
+
+                <p class="stats">Total Deaths:
+                    <span id="total_deaths"></span></p>
+                <p class="stats">New Confirmed:
+                    <span id="newCases"></span></p>
+                <p class="stats">New Deaths:
+                    <span id="newDeaths"></span></p>
+                <div class="stats-search">
+                    <!-- <label for="continent_input"></label> -->
+                    <input type="text" id="continent_input" name="name" placeholder="Country">
+
+                    <button class="btn big -- search" id="search-button">Search
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+
+
+                <div class="right-button">
+                    <button class="btn--big btn-big-right" id="btn-right">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+</div>
+
             </div>
 
             <!-- end of col -->
