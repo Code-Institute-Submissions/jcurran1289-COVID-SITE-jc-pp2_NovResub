@@ -6,16 +6,18 @@ window.addEventListener("load", function(){
     
 });
 
-
+//calling the first API to grab the data for the statistics summary section 
 const api_url = 'https://api.covid19api.com/summary';
 async function getData() {
     const response = await fetch(api_url);
     const data = await response.json();
     const countries = data.Countries;
     continent=countries;
+    //calls the onDone function when the API is finished pulling the data
     onDone();
 }
 
+//Calling the second API, time series data, populate the google chart
 let countriesTimelineDate= [];
 async function getTimeData(place) {
 const response = await fetch('https://api.covid19api.com/country/'+place+'/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z');
