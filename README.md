@@ -1,4 +1,4 @@
-![COVID LOGO](assets/images/logo.png)
+![COVID LOGO](assests/images/logo.png)
 
 # COVID-19 Dashboard
 
@@ -32,7 +32,6 @@ As the owner of the website:
 ### Existing Features
 - [COVID -19 Dashboard]():  The API allows for countries to be searched.  It requires the strign to be an exact match to return results.  Each result contains some high level information on COVID in the particular country.  This is the basis of my website - the user enters a string and when they click the Search button or press Search which calls three APIs.
 
-
 - The first API (https://documenter.getpostman.com/view/10808728/SzS8rjbc#auth-info-1e29ed29-066c-4494-ae5d-a6174a8fc551)(summary)  returns a summary of Covid in each country. from this i abstract the total Cases, total deaths , the most recent new confirmed Cases and most recent new deaths for the country selected. 
 
 -The second API (https://documenter.getpostman.com/view/10808728/SzS8rjbc#auth-info-1e29ed29-066c-4494-ae5d-a6174a8fc551)(summary) pulls a timeline of CCOVID cases reported on a particular date per country and displays it in timeseries using Google chart. 
@@ -41,12 +40,27 @@ As the owner of the website:
 
 - [Google Charts](https://developers.google.com/chart/interactive/docs/gallery/linechart) is used to display the COVID cases timeseries data per country. the chart is interactive therefore the user has the ability to see what the covid cases reported on a particular date were.
 
-### Features Left to Implement
 
+
+![website example] (assests/images/COVID-19 Dashboard.gif)
+
+### Features Left to Implement
+-The ability to apply a date filter on the time series 
+-The ability compare coutries to each other
 
 ## Technologies Used
+I used the following languages, frameworks and libraries to build this website:
+-HTML5 - HTML5 has been used to code the content of the website.
+-CSS3 - CSS3 has been used to style the content.
+-Javascript - JavaScript has been used to add interactivity to the site through calling API's and utilising the data returned by them.
+-Bootstrap - Bootstrap was used to quickly build the website and have the site responsive.
+-FontAwesome - FontAwesome was used to insert arrow icons into the webpage.
+-Google Fonts - Google Fonts have been used to style the text in the website. 
 
+## Testing / Development Obstacles
 
-## Testing
+-I have run all of my code through validation tools to ensure there are no errors. The HTML has been validated using (https://validator.w3.org/nu/#textarea), the CSS using (https://jigsaw.w3.org/css-validator/#validate_by_input) and the JavaScript through (https://jshint.com/).
 
-### Features Left to Implement
+-During implementing the API, I noticed then when loading the API of the summary of the countries COVID numbers, the code was moving onto the next line before the AAPI was finished calling the data. This made it impossible to test the data coming in becasue the console.log was not showing any data. To fix this I created the function onDone(). Therefore the onDone() funciton is called when the API is finished calling the data therefore i was able to see what the data looked like and use it for my website.
+
+-The console was showing errors for when the website loads related to the map and the line chart when the website initally loads. I changed around the calling of the functions to fix these errors

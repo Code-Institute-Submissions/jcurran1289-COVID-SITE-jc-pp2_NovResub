@@ -3,7 +3,7 @@ let continent=[]; //create empty array
 
 window.addEventListener("load", function(){
     getData();
-    getTimeData();
+    
 });
 
 
@@ -26,7 +26,7 @@ const response = await fetch('https://api.covid19api.com/country/'+place+'/statu
         countriesTimelineDate.push([countriesTimeline[i].Date.slice(0, 10),countriesTimeline[i].Cases]);
     }
     drawChart(countriesTimelineDate);
-
+console.log(countriesTimelineDate)
 }
 
 
@@ -162,7 +162,6 @@ document.getElementById("btn-left").addEventListener("click", function(){
 });
 
 google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
 
 function drawChart(trydata) {
   var data = google.visualization.arrayToDataTable(trydata);
