@@ -42,7 +42,7 @@ As the owner of the website:
 
 
 
-![website example] (assests/images/COVID-19 Dashboard.gif)
+![website example](assests/images/COVID-19-Dashboard.gif)
 
 ### Features Left to Implement
 -The ability to apply a date filter on the time series 
