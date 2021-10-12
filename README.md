@@ -2,7 +2,7 @@
 
 # COVID-19 Dashboard
 
-My project is aimed at the average user; primarily those that are trying to find out more information on how countries around the world were doing with controling the COVID-19 virus during the pandemic. the dashboard allows the user to search for a country and know the specific statistics about covid for this country.
+My project is aimed at the average user; primarily those that are trying to find out more information on how countries around the world have been effect by COVID 19 number wise. The dashboard allows the user to search for a country and know the how many cases the country has reported, number of deaths, number of new cases that day, number of new deaths, a times series of the number of new cases the country reported each day in march 2020 and the location of the country on a map.
 
 The website only has one page with a simple and clean layout.  There is a search box which allows users to search for any country.  The API then provides some high level information on the countries COVID numbers.  Utilising an API ensures that the data should be maintained and kept up to date.
 
@@ -13,16 +13,17 @@ The website is built using HTML, CSS and JavaScript.  The website can be found 
  ***
 
 ## UX
-The purpose of this site is to allow users find information about a particular country and their COVID numbers.  The statistics and inforamtion are front and center of the with nothing else on the page to not distract the user. i used an simplistic all white website to enrsure no distractions from the numebers. 
+The purpose of this site is to allow users find information about a particular country and their COVID numbers.  The statistics and inforamtion are front and center of the with nothing else on the page to not distract the user. i used a simplistic all white website to ensure no distractions from the data displayed. 
 
 ### User Stories
-The website is for users to find out more information on how COVID has effected each country around the worlds. As a user:
+The website is for users to find out more information on how COVID has effected each country around the world. As a user:
 -I want search for a country and find out the total cases and total deaths the country has to reported to date
 -I want to see a timeline of the cases per country
 -I want to see where exactly the country is on a map 
 
 As the owner of the website:
--I want users to be able to quickly search for a country and find out information about how COVID effected the country
+-I want users to be able to quickly search for a country and find out information about how COVID effected the country.
+-I want to provide the user with informative data in a simplistic layout.
 -I want to utilise an API to provide up to date information to my users.
 -I want to utilise an API to provide a map showing where the country is in the world.
 
@@ -30,15 +31,15 @@ As the owner of the website:
 ## Features
 
 ### Existing Features
-- [COVID -19 Dashboard]():  The API allows for countries to be searched.  It requires the strign to be an exact match to return results.  Each result contains some high level information on COVID in the particular country.  This is the basis of my website - the user enters a string and when they click the Search button or press Search which calls three APIs.
+- [COVID -19 Dashboard]():  The API allows for countries to be searched.  It requires the string to be an exact match to return results.  Each result contains some high level information on COVID in the particular country.  This is the basis of my website - the user enters a string and when they click the Search button or press Search which calls three APIs.
 
-- The first API (https://documenter.getpostman.com/view/10808728/SzS8rjbc#auth-info-1e29ed29-066c-4494-ae5d-a6174a8fc551)(summary)  returns a summary of Covid in each country. from this i abstract the total Cases, total deaths , the most recent new confirmed Cases and most recent new deaths for the country selected. 
+- The first API (https://documenter.getpostman.com/view/10808728/SzS8rjbc#auth-info-1e29ed29-066c-4494-ae5d-a6174a8fc551)(summary)  returns a summary of Covid in each country. From this it abstracts the total Cases, total deaths , the most recent new confirmed Cases and most recent new deaths for the country selected. 
 
--The second API (https://documenter.getpostman.com/view/10808728/SzS8rjbc#auth-info-1e29ed29-066c-4494-ae5d-a6174a8fc551)(summary) pulls a timeline of CCOVID cases reported on a particular date per country and displays it in timeseries using Google chart. 
+-The second API (https://documenter.getpostman.com/view/10808728/SzS8rjbc#auth-info-1e29ed29-066c-4494-ae5d-a6174a8fc551)(summary) pulls a timeline of CCOVID cases reported in March 2020 per country and displays it in timeseries graph using Google chart. 
 
 -The thrid API [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/overview) searches for the country entered and returns the lonitude and latitiude coordinates of the country. These coordinates are then mapped on a embedded google map on the page. 
 
-- [Google Charts](https://developers.google.com/chart/interactive/docs/gallery/linechart) is used to display the COVID cases timeseries data per country. the chart is interactive therefore the user has the ability to see what the covid cases reported on a particular date were.
+- [Google Charts](https://developers.google.com/chart/interactive/docs/gallery/linechart) is used to display the COVID cases timeseries data per country. The chart is interactive therefore the user has the ability to see what the covid cases reported on a particular date.
 
 
 
@@ -46,7 +47,7 @@ As the owner of the website:
 
 ### Features Left to Implement
 -The ability to apply a date filter on the time series 
--The ability compare coutries to each other
+-The ability to compare a countries numbers to another country.
 
 ## Technologies Used
 I used the following languages, frameworks and libraries to build this website:
@@ -61,6 +62,6 @@ I used the following languages, frameworks and libraries to build this website:
 
 -I have run all of my code through validation tools to ensure there are no errors. The HTML has been validated using (https://validator.w3.org/nu/#textarea), the CSS using (https://jigsaw.w3.org/css-validator/#validate_by_input) and the JavaScript through (https://jshint.com/).
 
--During implementing the API, I noticed then when loading the API of the summary of the countries COVID numbers, the code was moving onto the next line before the AAPI was finished calling the data. This made it impossible to test the data coming in becasue the console.log was not showing any data. To fix this I created the function onDone(). Therefore the onDone() funciton is called when the API is finished calling the data therefore i was able to see what the data looked like and use it for my website.
+-During implementing the API, I noticed then when loading the API of the summary of the countries COVID numbers, the code was moving onto the next line before the API was complete. This made it impossible to test the data coming in becasue the console.log was not showing any data. To fix this I created the function onDone(). Therefore the onDone() funciton is called when the API is finished calling the data therefore i was able to see what the data looked like and use it for my website.
 
 -The console was showing errors for when the website loads related to the map and the line chart when the website initally loads. I changed around the calling of the functions to fix these errors
