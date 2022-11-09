@@ -61,18 +61,18 @@ let newCases =document.getElementById("newCases");
 let newDeaths =document.getElementById("newDeaths");
 let continentName =document.getElementById("continentHeader");
 
-var currentIndex = 0;
+let currentIndex = 0;
 document.getElementById("search-button").addEventListener("click", function () {
-    var value = document.getElementById('continent_input').value;
+    let value = document.getElementById('continent_input').value;
 
     if (value.length > 0) {
-        var found = false;
-        var result = null;
-        var newIndex = 0;
+        let found = false;
+        let result = null;
+        let newIndex = 0;
 
         for (i = 0; i < continent.length; i++) {
-            var currentContinet = continent[i];
-            var name = currentContinet['Country'];
+            let currentContinet = continent[i];
+            let name = currentContinet['Country'];
 
             console.log(name);
 
@@ -166,16 +166,16 @@ document.getElementById("btn-left").addEventListener("click", function(){
 google.charts.load('current', {'packages':['corechart']});
 
 function drawChart(trydata) {
-  var data = google.visualization.arrayToDataTable(trydata);
+  let data = google.visualization.arrayToDataTable(trydata);
 
-  var options = {
+  let options = {
     title: 'COVID Timeseriers',
     curveType: 'function',
     legend: { position: 'bottom' }
    
   };
 
-  var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+  let chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
 
   chart.draw(data, options);
 }
