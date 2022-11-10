@@ -60,7 +60,26 @@ I used the following languages, frameworks and libraries to build this website:
 
 ## Testing / Development Obstacles
 
--I have run all of my code through validation tools to ensure there are no errors. The HTML has been validated using (https://validator.w3.org/nu/#textarea), the CSS using (https://jigsaw.w3.org/css-validator/#validate_by_input) and the JavaScript through (https://jshint.com/).
+## Testing
+
+### Lighthouse Audit 
+![Lighthouse Audit](https://github.com/KateEllen/Animal-Quiz/blob/main/assets/images/documentation/audit.png)
+
+
+### Validator Testing 
+#### W3C CSS Validation 
+Passed through the CSS validator with no errors.
+![CSS Validator](assests/images/css_val_pp2.PNG)
+
+#### HTML Validator 
+Passed through HTML Validator with no errors.
+![HTML Validator](assests/images/HTML_VAl_pp2.PNG)
+
+#### JSHint 
+Passed through JSHint with no errors. 
+![JS Validator](assests/images/JS_val.PNG)
+
+
 
 -During implementing the API, I noticed then when loading the API of the summary of the countries COVID numbers, the code was moving onto the next line before the API was complete. This made it impossible to test the data coming in becasue the console.log was not showing any data. To fix this I created the function onDone(). Therefore the onDone() funciton is called when the API is finished calling the data therefore i was able to see what the data looked like and use it for my website.
 
