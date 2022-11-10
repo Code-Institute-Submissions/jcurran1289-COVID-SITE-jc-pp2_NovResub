@@ -1,3 +1,4 @@
+/*jshint esversion: 8 */
 let continent=[]; //create empty array
 
 
@@ -23,17 +24,17 @@ async function getTimeData(place) {
 const response = await fetch('https://api.covid19api.com/country/'+place+'/status/confirmed?from=2020-03-01T00:00:00Z&to=2020-04-01T00:00:00Z');
     const countriesTimeline = await response.json();
     countriesTimelineDate= [['Date', 'Cases']];
-    for(i=0; i< countriesTimeline.length; i++){
+    for(let i=0; i< countriesTimeline.length; i++){
 
         countriesTimelineDate.push([countriesTimeline[i].Date.slice(0, 10),countriesTimeline[i].Cases]);
     }
     drawChart(countriesTimelineDate);
-console.log(countriesTimelineDate)
+console.log(countriesTimelineDate);
 }
 
 
 let mapLocation;
-let mapLocationlng= [];
+//let mapLocationlng= [];
 async function getMapData(place) {
     const response = await fetch('https://maps.googleapis.com/maps/api/geocode/json?address='+place+'&key=AIzaSyDlDbfJtg5Gs7rrr59IwV0RgFxOUcEIS1s');
     const mapsData = await response.json();
@@ -42,7 +43,8 @@ async function getMapData(place) {
 }
 
 function onDone(){
-     
+     if (typeof(continent)!="undefined")
+     {
         continentName.innerHTML=continent[0].Country;
         total_cases.innerHTML=continent[0].TotalConfirmed;
         total_deaths.innerHTML=continent[0].TotalDeaths;
@@ -50,11 +52,14 @@ function onDone(){
         newDeaths.innerHTML=continent[0].NewDeaths;
         getMapData(continent[0].Country);
         getTimeData(continent[0].Country);
-   
+    }else{
+        document.getElementById("curve_chart").innerHTML="Unable access chart right now. Please try again later";
+    }
+    
 }
 
-let search_button = document.getElementById("search-button");
-let continent_input = document.getElementById("continent_input");
+//let search_button = document.getElementById("search-button");
+//alet continent_input = document.getElementById("continent_input");
 let total_cases = document.getElementById("total_cases");
 let total_deaths =document.getElementById("total_deaths");
 let newCases =document.getElementById("newCases");
@@ -70,9 +75,9 @@ document.getElementById("search-button").addEventListener("click", function () {
         let result = null;
         let newIndex = 0;
 
-        for (i = 0; i < continent.length; i++) {
+        for (let i = 0; i < continent.length; i++) {
             let currentContinet = continent[i];
-            let name = currentContinet['Country'];
+            let name = currentContinet.Country;
 
             console.log(name);
 
