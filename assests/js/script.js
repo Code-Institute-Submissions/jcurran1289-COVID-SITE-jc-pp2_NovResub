@@ -34,7 +34,6 @@ console.log(countriesTimelineDate);
 
 
 let mapLocation;
-//let mapLocationlng= [];
 async function getMapData(place) {
     const response = await fetch('https://maps.googleapis.com/maps/api/geocode/json?address='+place+'&key=AIzaSyDlDbfJtg5Gs7rrr59IwV0RgFxOUcEIS1s');
     const mapsData = await response.json();
@@ -58,8 +57,7 @@ function onDone(){
     
 }
 
-//let search_button = document.getElementById("search-button");
-//alet continent_input = document.getElementById("continent_input");
+
 let total_cases = document.getElementById("total_cases");
 let total_deaths =document.getElementById("total_deaths");
 let newCases =document.getElementById("newCases");
