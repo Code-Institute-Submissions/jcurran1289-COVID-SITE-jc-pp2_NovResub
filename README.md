@@ -63,8 +63,7 @@ I used the following languages, frameworks and libraries to build this website:
 ## Testing
 
 ### Lighthouse Audit 
-![Lighthouse Audit](https://github.com/KateEllen/Animal-Quiz/blob/main/assets/images/documentation/audit.png)
-
+![Lighthouse Audit](assests/images/lighthouse_pp2.PNG)
 
 ### Validator Testing 
 #### W3C CSS Validation 
@@ -79,8 +78,32 @@ Passed through HTML Validator with no errors.
 Passed through JSHint with no errors. 
 ![JS Validator](assests/images/JS_val.PNG)
 
+#### Cross Browser and Device Testing
+
+- I tested my site on the below. 
+1. Samsung S20 - 412 X 915
+2. iPhone SE - 375 X 667 
+3. pixel 5 - 393 x 851
+
+- It was also tested on safari, chrome and firefox. 
 
 
 -During implementing the API, I noticed then when loading the API of the summary of the countries COVID numbers, the code was moving onto the next line before the API was complete. This made it impossible to test the data coming in becasue the console.log was not showing any data. To fix this I created the function onDone(). Therefore the onDone() funciton is called when the API is finished calling the data therefore i was able to see what the data looked like and use it for my website.
 
 -The console was showing errors for when the website loads related to the map and the line chart when the website initally loads. I changed around the calling of the functions to fix these errors
+
+
+## Defects
+
+## Deployments 
+- The site was deployed to GitHub pages. The steps to deploy are as follows: 
+  - In the GitHub repository, navigate to the Settings tab 
+  ![Settings Tab](https://github.com/KateEllen/Animal-Quiz/blob/main/assets/images/documentation/settings-screenshot.png)
+  - Scroll down the page and find the Github pages section, and click on the link.
+  ![Github Page Link](https://github.com/KateEllen/Animal-Quiz/blob/main/assets/images/documentation/github-pages-screenshot.png)
+  - From the source section drop-down menu, select the Master Branch
+  ![Select Source](https://github.com/KateEllen/Animal-Quiz/blob/main/assets/images/documentation/published-screenshot.png)
+  - Select the save button. 
+  - Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment. 
+
+The live link can be found here - https://kateellen.github.io/Animal-Quiz/
